@@ -24,6 +24,8 @@ function ToDoEditContainer({ todo, updateTodo }) {
         variant="outlined"
         value={todo.label}
         onChange={(evt) => onChangeHandler(evt, todo.id)}
+        error={Boolean(todo.error)}
+        helperText={todo.error}
       />
       <IconButton aria-label="delete" onClick={deleteItem}>
         <DeleteIcon />

@@ -16,19 +16,47 @@ function UpdateToDo() {
 
   const updateTodo = (id, label) => {
     setTodoList((prev) => {
-      let prevToDoList = [...prev];
-      for (var i in prevToDoList) {
-        if (prevToDoList[i].id === id) {
-          prevToDoList[i].label = label;
-          break; //Stop this loop, we found it!
-        }
-      }
-      return prevToDoList;
+      return prev.map((todo) => (todo.id === id ? { ...todo, label } : todo));
     });
   };
 
+  const validateAll = (labelList) => {
+    let id;
+    let error = "";
+    labelList.forEach((element, index) => {
+      if (id) return;
+      if (!element) {
+        id = index;
+        error = "Input Required";
+        return;
+      }
+
+      if (labelList.filter((item) => item === element).length > 1) {
+        id = index;
+        error = "Duplicate";
+      }
+    });
+    return { id, error };
+  };
+
   const saveChanges = () => {
-    dispatch(updateToDo(todoList));
+    const labelList = todoList.map((item) => item.label);
+    const { id, error } = validateAll(labelList);
+
+    setTodoList((prev) => {
+      return prev.map((todo) => (todo.id === id ? { ...todo, error } : todo));
+    });
+    if (!error) {
+      dispatch(updateToDo(todoList));
+    }
+
+    setTimeout(() => {
+      setTodoList((prev) => {
+        return prev.map((todo) =>
+          todo.id === id ? { ...todo, error: "" } : todo
+        );
+      });
+    }, 3000);
   };
 
   return (

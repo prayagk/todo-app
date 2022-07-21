@@ -3,11 +3,13 @@ import { useDispatch } from "react-redux";
 import { createToDo } from "../store/todo/todoActions";
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
+import useValidate from "../hooks/useValidate";
 
 function CreateToDo() {
   const [label, setLabel] = useState("");
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const validate = useValidate();
 
   const onLabelChangeHandler = (evt) => {
     const label = evt.target.value;
@@ -15,9 +17,17 @@ function CreateToDo() {
   };
 
   const onClickHandler = () => {
-    // TODO - validations
-    setError("");
+    const error = validate(label);
+    setError(error);
+    if (error) {
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+      return;
+    }
+
     dispatch(createToDo(label));
+    setLabel("");
   };
 
   return (

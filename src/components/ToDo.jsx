@@ -19,6 +19,7 @@ function ToDo({ todo }) {
             onClick={() => onClickHandler(todo.id)}
           />
         }
+        className={todo.isDone ? "done" : ""}
         label={todo.label}
       />
     </>
