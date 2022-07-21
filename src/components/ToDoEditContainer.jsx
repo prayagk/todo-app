@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { IconButton, TextField } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { TextField } from "@mui/material";
 import { deleteToDo } from "../store/todo/todoActions";
+import DeleteModal from "./DeleteModal";
 
 function ToDoEditContainer({ todo, updateTodo }) {
   const dispatch = useDispatch();
@@ -27,9 +27,7 @@ function ToDoEditContainer({ todo, updateTodo }) {
         error={Boolean(todo.error)}
         helperText={todo.error}
       />
-      <IconButton aria-label="delete" onClick={deleteItem}>
-        <DeleteIcon />
-      </IconButton>
+      <DeleteModal deleteItem={deleteItem} />
     </>
   );
 }

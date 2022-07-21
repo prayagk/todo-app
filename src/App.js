@@ -5,17 +5,22 @@ import Navbar from "./components/Navbar";
 import UpdateToDo from "./pages/UpdateToDo";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme();
 
 function App() {
   return (
-    <Provider store={store}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="create" element={<CreateToDo />} />
-        <Route path="update" element={<UpdateToDo />} />
-      </Routes>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <Navbar />
+        <Routes>
+          <Route path="/todo-app" element={<Home />} />
+          <Route path="/todo-app/create" element={<CreateToDo />} />
+          <Route path="/todo-app/update" element={<UpdateToDo />} />
+        </Routes>
+      </Provider>
+    </ThemeProvider>
   );
 }
 

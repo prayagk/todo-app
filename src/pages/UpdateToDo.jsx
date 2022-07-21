@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, List, ListItem } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import ToDoEditContainer from "../components/ToDoEditContainer";
 import { updateToDo } from "../store/todo/todoActions";
+import EmptyDiv from "../components/EmptyDiv";
 
 function UpdateToDo() {
   const data = useSelector((state) => state);
@@ -71,9 +71,7 @@ function UpdateToDo() {
           <Button onClick={saveChanges}>Save</Button>
         </>
       ) : (
-        <div>
-          Nothing to display. Add one <Link to={"/create"}>here.</Link>
-        </div>
+        <EmptyDiv />
       )}
     </List>
   );
