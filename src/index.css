@@ -14,13 +14,28 @@ code {
 
 nav {
   padding: 16px 32px;
+  background-color: #1976d2;
+  font-size: 20px;
 }
 
 nav a {
   margin-right: 16px;
+  color: rgb(255, 255, 255);
 }
 
 .done {
-  background-color: #e7fde7;
   text-decoration: line-through;
+  color: #9399add1;
+}
+
+.todoContainer {
+  background-color: #efe7e7;
+  min-height: 50vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
 }

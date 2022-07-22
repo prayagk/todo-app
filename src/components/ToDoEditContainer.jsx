@@ -26,6 +26,7 @@ function ToDoEditContainer({ todo, updateTodo }) {
         onChange={(evt) => onChangeHandler(evt, todo.id)}
         error={Boolean(todo.error)}
         helperText={todo.error}
+        style={{ backgroundColor: "#ffffff" }}
       />
       <DeleteModal deleteItem={deleteItem} />
     </>

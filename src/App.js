@@ -14,11 +14,19 @@ function App() {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <Navbar />
-        <Routes>
-          <Route path="/todo-app" element={<Home />} />
-          <Route path="/todo-app/create" element={<CreateToDo />} />
-          <Route path="/todo-app/update" element={<UpdateToDo />} />
-        </Routes>
+        <div
+          style={{
+            backgroundColor: "rgb(255 247 247)",
+            height: "100vh",
+            paddingTop: 20,
+          }}
+        >
+          <Routes>
+            <Route path="/todo-app" element={<Home />} />
+            <Route path="/todo-app/create" element={<CreateToDo />} />
+            <Route path="/todo-app/update" element={<UpdateToDo />} />
+          </Routes>
+        </div>
       </Provider>
     </ThemeProvider>
   );

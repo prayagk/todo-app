@@ -1,4 +1,4 @@
-import { Box, Container, FormGroup, ListItem, Paper } from "@mui/material";
+import { Box, Container, FormGroup, Paper } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import EmptyDiv from "../components/EmptyDiv";
@@ -9,26 +9,30 @@ function Home() {
   const todoList = useSelector((state) => state);
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper className="todoContainer" elevation={2}>
-        {todoList.length ? (
-          <>
-            <Box px={2} sx={{ display: "flex", justifyContent: "center" }}>
-              <h2>To-Do List</h2>
-            </Box>
-            <FormGroup>
-              {todoList.map((item) => (
-                <ListItem key={item.id}>
-                  <ToDo todo={item} />
-                </ListItem>
-              ))}
-            </FormGroup>
-          </>
-        ) : (
-          <EmptyDiv />
-        )}
-      </Paper>
-    </Container>
+    <Box pt={1}>
+      <Container component="main" maxWidth="xs">
+        <Paper elevation={2}>
+          <div className="todoContainer">
+            {todoList.length ? (
+              <>
+                <Box px={2} sx={{ display: "flex", justifyContent: "center" }}>
+                  <h2 style={{ textDecoration: "underline" }}>To-Do List</h2>
+                </Box>
+                <Box px={3}>
+                  <FormGroup>
+                    {todoList.map((item) => (
+                      <ToDo key={item.id} todo={item} />
+                    ))}
+                  </FormGroup>
+                </Box>
+              </>
+            ) : (
+              <EmptyDiv />
+            )}
+          </div>
+        </Paper>
+      </Container>
+    </Box>
   );
 }
 

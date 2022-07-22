@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 
 function EmptyDiv() {
   return (
-    <Container>
-      <Box>
-        Nothing to display. Add one <Link to={"/todo-app/create"}>here.</Link>
+    <Container className="center">
+      <Box pt={1}>
+        <h3>
+          Nothing to display. Add one <Link to={"/todo-app/create"}>here.</Link>
+        </h3>
       </Box>
     </Container>
   );
