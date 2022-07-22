@@ -43,7 +43,7 @@ function UpdateToDo() {
   };
 
   const saveChanges = () => {
-    const labelList = todoList.map((item) => item.label);
+    const labelList = todoList.map((item) => item.label.trim());
     const { id, error } = validateAll(labelList);
 
     setTodoList((prev) => {
